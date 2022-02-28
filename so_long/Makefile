@@ -9,7 +9,7 @@ LIBFT_EXE = libs/libft/libft.a
 
 MLX_DIR = libs/minilibx
 
-SRC = srcs/test.c
+SRC = srcs/main.c
 
 OBJ = $(SRC:.c=.o)
 

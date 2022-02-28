@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:48:06 by bmiguel-          #+#    #+#             */
-/*   Updated: 2021/12/02 20:48:21 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/02/28 21:06:57 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
-#include <stdarg.h>
+# include <stdarg.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -125,7 +126,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*get_next_line(int fd);
 
+# ifndef OPEN_MAX
 # define OPEN_MAX 256
+# endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
