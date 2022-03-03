@@ -9,7 +9,7 @@ LIBFT_EXE = libs/libft/libft.a
 
 MLX_DIR = libs/minilibx
 
-SRC = srcs/main.c
+SRC = srcs/test.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -25,11 +25,14 @@ RESET       =   \033[0m
 
 all: $(NAME)
 
+.SILENT: $(OBJS)
+
 $(NAME): $(LIBFT_EXEC) $(OBJ)
 	@cat mkart
-	@echo "$(YELLOW)[Compiling so_long ...]$(RESET)"
+	@echo "$(YELLOW)[Initializing so_long ...]$(RESET)"
 	@echo "$(YELLOW)[Compiling libft ...]$(RESET)"
 	@make -C $(LIBFT_DIR)
+	@echo "$(YELLOW)[Compiling so_long ...]$(RESET)"
 	@$(CC) $(CFLAGS) $(LIBFT_EXE) $(OBJ) -o $(NAME) $(INC)
 	@echo "$(YELLOW)[Creating build dir ...]$(RESET)"
 	@mkdir -p build \build/objs
@@ -50,5 +53,8 @@ fclean: clean
 	@echo "$(RED)[so_long has been removed!]$(RESET)"
 
 re: fclean all
+
+exe: all
+	@build/bin/./so_long
 
 .PHONY: all clean fclean re

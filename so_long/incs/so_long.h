@@ -6,7 +6,7 @@
 /*   By: bmiguel- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/02/28 21:22:50 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:02:26 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,30 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
+
+typedef struct s_map {
+	void	*img;
+	char	*address;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_map;
+
+typedef struct s_wall {
+    void    *img;
+    char    *address;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}       t_wall;
+
+typedef struct s_char {
+    void    *img;
+    char    *address;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}       t_char;
 
 int main();
 
