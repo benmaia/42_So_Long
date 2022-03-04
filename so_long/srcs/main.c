@@ -5,72 +5,85 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 21:21:16 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/03 14:40:10 by bmiguel-         ###   ########.fr       */
+/*   Created: 2022/03/03 14:39:19 by bmiguel-          #+#    #+#             */
+/*   Updated: 2022/03/04 22:42:00 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
-/*
-int	deal_key(int key, void *param)
+#include "../inc/so_long.h"
+
+// static int	finish(t_structer *env)
+// {
+// 	//free_struct(env);
+// 	mlx_destroy_image(env->mlx, env->img_1.img);
+// 	mlx_destroy_image(env->mlx, env->img_0.img);
+// 	mlx_destroy_image(env->mlx, env->img_p.img);
+// 	//mlx_destroy_image(env->mlx, env->i_e.img);
+// 	//mlx_destroy_image(env->mlx, env->i_c.img);
+// 	mlx_destroy_window(env->mlx, env->window);
+// 	//exit(0);
+// 	return (1);
+// }
+
+int loop(int keycode, t_structer *structer)
 {
-	ft_putchar_fd('X', 1);
-	//mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-	(void)key;
-	(void)param;
-	return (0);
+	(void) keycode;
+	(void) structer;
+	int x = 0;
+	int y = 0;
+	
+	while (++y < 1000)
+	{
+		x = 0;
+		while (++x < 1000)
+		{
+			mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_0.img, structer->win_x, structer->win_y);
+			mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img, x, y);
+			x += 100;
+		}
+		y += 100;
+	}
+	return (1);
 }
 
-int	create_trgb(int t, int r, int g, int b)
+int	key_hook(int keycode, t_structer *structer)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	(void) keycode;
+	(void) structer;
+	int x = 0;
+	int y = 0;
+
+	//printf("Hello from key_hook!\n");
+	// mlx_destroy_image(structer->mlx, structer->img_p.img);
+	// mlx_destroy_image(structer->mlx, structer->img_0.img);
+	// mlx_destroy_window(structer->mlx, structer->window);
+	// structer->img_p.img = mlx_xpm_file_to_image(structer->mlx, "char.xpm", &structer->img_p.width, &structer->img_p.height);
+	// mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img, x, y);
+	//mlx_clear_window(structer->mlx, structer->window);
+	//mlx_clear_window(structer->mlx, structer->window);
+	printf("ok %i %i\n", x, y);
+	// while (++y < 1000)
+	// {
+	// 	x = 0;
+	// 	while (++x < 1000)
+	// 	{
+	// 		// mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_0.img, structer->win_x, structer->win_y);
+	// 		mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img, x, y);
+	// 		x += 100;
+	// 	}
+	// 	y += 100;
+	//}
+	mlx_key_hook(structer->window, loop, structer);
+	return (1);
 }
 
 int main()
 {
-	void *mlx;
-	void *win;
-	void	*img;
-	int pixel_bits;
-	int line_bytes;
-	int endian;
-	char *buffer;
-	int x;
-	int y;
-	//int pixel;
-	int color = 0xABCDEF;
-		
-	x = -1;
-	y = -1;
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1000, 1000, "mlx 42");
-	img = mlx_new_image(mlx, 1000, 1000);
-	buffer = mlx_get_data_addr(img, &pixel_bits, &line_bytes, &endian);
-	while (++y < 800)
-	{
-		while (++x < 1000)
-		{
-			int pixel = (y * line_bytes) + (x * 4);
-
-			if (endian == 1)        // Most significant (Alpha) byte first
-    		{
-        		buffer[pixel + 0] = (color >> 24);
-        		buffer[pixel + 1] = (color >> 16) & 0xFF;
-        		buffer[pixel + 2] = (color >> 8) & 0xFF;
-        		buffer[pixel + 3] = (color) & 0xFF;
-   			}
-    		else if (endian == 0)   // Least significant (Blue) byte first
-    		{
-       			 buffer[pixel + 0] = (color) & 0xFF;
-       			 buffer[pixel + 1] = (color >> 8) & 0xFF;
-       			 buffer[pixel + 2] = (color >> 16) & 0xFF;
-        		buffer[pixel + 3] = (color >> 24);
-    		}
-		}
-		x = -1;
-	}
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
-	//mlx_string_put(mlx, win, 500, 500, create_trgb(0, 255, 0 , 0), "ola tudo bem");
-	mlx_key_hook(win, deal_key, (void *)0);
-	mlx_loop(mlx);*/
+	t_structer	*structer;
+	
+	structer = ft_init_struct();
+	ft_init_window(structer);
+	mlx_key_hook(structer->window, key_hook, structer);
+	mlx_loop(structer->mlx);
+	free(structer);
 }
