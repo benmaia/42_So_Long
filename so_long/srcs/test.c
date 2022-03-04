@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmiguel- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 14:39:19 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/03 19:46:21 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/04 00:00:12 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,17 @@ int main()
 	t_char	img2;
 	int		x;
 	int		y;
-	int		x1;
-	int		y1;
 
-	
 	mlx = mlx_init();
-	window = mlx_new_window(mlx, 2000, 1500, "So Long");
+	window = mlx_new_window(mlx, 2000, 2000, "So Long");
 	imgs.img = mlx_xpm_file_to_image(mlx, "oooo.xpm", &x, &y);
-	img2.img = mlx_xpm_file_to_image(mlx, "111.xpm", &x, &y);
+	img2.img = mlx_xpm_file_to_image(mlx, "char.xpm", &x, &y);
 	imgs.address = mlx_get_data_addr(imgs.img, &imgs.bits_per_pixel, &imgs.line_length, &imgs.endian);
 	img2.address = mlx_get_data_addr(img2.img, &img2.bits_per_pixel, &img2.line_length, &img2.endian);
-	//mlx_put_image_to_window(mlx, window, imgs.img, 0, 0);
-	x1 = 0;
-	y1 = 0;
-	while (y1 < 1)
-	{
-		x1 = 0;
-		while (x1 < 1)
-		{
-			mlx_put_image_to_window(mlx, window, imgs.img, 0, 0);
-			mlx_put_image_to_window(mlx, window, img2.img, x1, y1);
-			x1++;
-		}
-		y1++;
-	}
-	//mlx_put_image_to_window(mlx, window, imgs.img, 0, 0);
-	//img2.img = mlx_xpm_file_to_image(mlx, "111.xpm", &x, &y);
-	//mlx_put_image_to_window(mlx, window, img2.img, 100, 100);
+	mlx_put_image_to_window(mlx, window, imgs.img, 0, 0);
+	mlx_put_image_to_window(mlx, window, img2.img, 0, 0);
+	mlx_put_image_to_window(mlx, window, img2.img, 500, 0);
+	mlx_put_image_to_window(mlx, window, img2.img, 1000, 0);
 	mlx_destroy_image(mlx, img2.img);
 	mlx_loop(mlx);
 }
