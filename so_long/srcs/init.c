@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/04 21:26:00 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/05 19:10:48 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,10 @@ void	ft_init_window(t_structer *structer)
 	y = 0;
 	structer->mlx = mlx_init();
 	structer->window = mlx_new_window(structer->mlx, structer->win_x, structer->win_y, "So Long");
-	
-	structer->img_0.img = mlx_xpm_file_to_image(structer->mlx, "oooo.xpm", &structer->img_0.width, &structer->img_0.height);
+	structer->img_0.img = mlx_xpm_file_to_image(structer->mlx, "oie.xpm", &structer->img_0.width, &structer->img_0.height);
 	mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_0.img, x, y);
 	structer->img_p.img = mlx_xpm_file_to_image(structer->mlx, "char.xpm", &structer->img_p.width, &structer->img_p.height);
 	mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img, x, y);
-	// mlx_clear_window(structer->mlx, structer->window);
-	// structer->img_0.img = mlx_xpm_file_to_image(structer->mlx, "oooo.xpm", &structer->img_0.width, &structer->img_0.height);
-	// mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_0.img, x, y);
-	// structer->img_p.img = mlx_xpm_file_to_image(structer->mlx, "char.xpm", &structer->img_p.width, &structer->img_p.height);
-	// mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img, 100, 100);
 }
 
 
@@ -77,6 +71,5 @@ void	ft_init_window(t_structer *structer)
 // 			if (structer->map[i][j] == 0)
 // 				mlx_put_image_to_window = ()
 // 		}
-		
 // 	}
 // }

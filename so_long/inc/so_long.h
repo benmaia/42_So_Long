@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/04 20:27:19 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/05 19:11:54 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,16 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define IMG_WIDTH 1000
-# define IMG_HEIGHT 1000
+# define IMG_WIDTH 2560
+# define IMG_HEIGHT 1440
+
+typedef enum key {
+	W = 13,
+	S = 1,
+	A = 0,
+	D = 2,
+	ESC = 53
+}	t_key;
 
 typedef struct s_img {
     void	*img;
@@ -73,6 +81,11 @@ typedef struct s_structer {
 // }       t_char;
 
 int main();
+
 t_structer *ft_init_struct(void);
+
 void	ft_init_window(t_structer *structer);
+
+//
+
 #endif
