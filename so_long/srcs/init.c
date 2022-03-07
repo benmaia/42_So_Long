@@ -3,76 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/06 14:26:20 by paijavai         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:03:15 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_structer *ft_init_struct(void)
+t_base	*ft_init_struct(void)
 {
-	t_structer	*structer;
-	
-	structer = (t_structer *)malloc(sizeof(t_structer));
-	if (!structer)
+	t_base	*base;
+
+	base = (t_base *)malloc(sizeof(t_base));
+	if (!base)
 	{
-		//write(1, "Error\n", 6);
+		write(1, "Error\n", 6);
 		return (0);
 	}
-	structer->win_x = 1000;
-	structer->win_y = 1000;
-	structer->move_counter = 0;
-	structer->map_x = 0;
-	structer-> map_y = 0;
-	structer->px = 0;
-	structer->py = 0;
-	structer->x = 0;
-	structer->y = 0;
-	structer->map = NULL;
-	structer->img_0.img_d = NULL;
-	structer->img_p.img_d = NULL;
-	return (structer);
+	base->win_x = 1000;
+	base->win_y = 1000;
+	base->move_counter = 0;
+	return (base);
 }
 
-void	ft_init_img(t_structer *structer)
+void	init_keys(t_base *base)
 {
-	structer->img_0.img_d = mlx_xpm_file_to_image(structer->mlx, "oooo.xpm", &structer->img_0.width, &structer->img_0.height);
-	mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_0.img_d, 0, 0);
-	structer->img_p.img_d = mlx_xpm_file_to_image(structer->mlx, "front.xpm", &structer->img_p.width, &structer->img_p.height);
-	mlx_put_image_to_window(structer->mlx, structer-> window, structer->img_p.img_d, 0, 0);
-	structer->img_p.img_l = mlx_xpm_file_to_image(structer->mlx, "left.xpm", &structer->img_p.width, &structer->img_p.height);
-	structer->img_p.img_r = mlx_xpm_file_to_image(structer->mlx, "right.xpm", &structer->img_p.width, &structer->img_p.height);
-	structer->img_p.img_u = mlx_xpm_file_to_image(structer->mlx, "back.xpm", &structer->img_p.width, &structer->img_p.height);
+	base-> keys.a = 0;
+	base-> keys.d = 0;
+	base-> keys.w = 0;
+	base-> keys.s = 0;
+	base-> keys.esc = 0;
 }
 
-void	ft_init_window(t_structer *structer)
+void	init_player(t_base *base)
 {
-	structer->mlx = mlx_init();
-	structer->window = mlx_new_window(structer->mlx, structer->win_x, structer->win_y, "So Long");
-	ft_init_img(structer);
+	base->img_p.x = 0;
+	base->img_p.y = 0;
+	base->img_p.pace = 3;
+	base->img_p.img_s = mlx_xpm_file_to_image(base->mlx, \
+	"front.xpm", &base->img_p.width, &base->img_p.height);
+	mlx_put_image_to_window(base->mlx, base-> window, base->img_p.img_s, 0, 0);
+	base->img_p.img_a = mlx_xpm_file_to_image(base->mlx, \
+	"left.xpm", &base->img_p.width, &base->img_p.height);
+	base->img_p.img_d = mlx_xpm_file_to_image(base->mlx, \
+	"right.xpm", &base->img_p.width, &base->img_p.height);
+	base->img_p.img_w = mlx_xpm_file_to_image(base->mlx, \
+	"back.xpm", &base->img_p.width, &base->img_p.height);
+	base->img_p.img = base->img_p.img_s;
 }
 
+void	init_map(t_base *base)
+{
+	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
+	"oooo.xpm", &base->img_0.width, &base->img_0.height);
+	mlx_put_image_to_window(base->mlx, base-> window, base->img_0.img, 0, 0);
+}
 
-// void	ft_init_map(t_structer *structer)
-// {
-// 	int	i;
-// 	int	y;
-// 	int	x;
-// 	int	y;
-	
-// 	i = -1;
-// 	while (++i < structer->map_y)
-// 	{
-// 		j = -1;
-// 		while (++j < structer->map_x)
-// 		{
-// 			x = IMG_HEIGHT * j;
-// 			y = IMG_WIDTH * i;
-// 			if (structer->map[i][j] == 0)
-// 				mlx_put_image_to_window = ()
-// 		}
-// 	}
-// }
+void	ft_init_window(t_base *base)
+{
+	base->mlx = mlx_init();
+	base->window = mlx_new_window(base->mlx, base->win_x, \
+	base->win_y, "So Long");
+	init_keys(base);
+	init_map(base);
+	init_player(base);
+	ft_init_struct();
+}

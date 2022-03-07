@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/06 14:24:10 by paijavai         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:04:11 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
-# include "../libs/minilibx-linux/mlx.h"
+//# include "../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
-
-# define IMG_WIDTH 2560
-# define IMG_HEIGHT 1440
 
 typedef enum key {
 	W = 13,
@@ -30,66 +27,63 @@ typedef enum key {
 	ESC = 53
 }	t_key;
 
+typedef struct keys {
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	esc;
+}	t_keys;
+
 typedef struct s_img {
-    void	*img_d;
-	void	*img_l;
-	void	*img_r;
-	void	*img_u;
-    char	*address;
-    int		bits_per_pixel;
-    int		line_length;
-    int		endian;
+	void	*img_w;
+	void	*img_s;
+	void	*img_d;
+	void	*img_a;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		height;
 	int		width;
-}       t_img;
+	int		pace;
+	int		x;
+	int		y;
+}	t_img;
 
-typedef struct s_structer {
+typedef struct s_base {
 	void	*mlx;
 	void	*window;
 	char	**map;
 	int		win_x;
 	int		win_y;
 	int		move_counter;
-	int		map_x;
-	int		map_y;
-	int		x;
-	int		y;
-	int		px;
-	int		py;
-	int		ex;
-	int		ey;
 	t_img	img_0;
 	t_img	img_1;
 	t_img	img_p;
 	t_img	img_c;
 	t_img	img_e;
-	
-}		t_structer;
+	t_keys	keys;
+}		t_base;
 
-// typedef struct s_img {
-//     void	*img;
-//     char	*address;
-//     int		bits_per_pixel;
-//     int		line_length;
-//     int		endian;
-// 	int		height;
-// 	int		width;
-// }       t_img;
+int		main(void);
 
-// typedef struct s_char {
-//     void    *img;
-//     char    *address;
-//     int     bits_per_pixel;
-//     int     line_length;
-//     int     endian;
-// }       t_char;
+t_base	*ft_init_struct(void);
 
-int main();
+void	ft_init_window(t_base *base);
 
-t_structer *ft_init_struct(void);
+int		ft_key_hook_up(int keycode, t_base *base);
 
-void	ft_init_window(t_structer *structer);
+int		ft_key_hook_down(int keycode, t_base *base);
 
+int		ft_hook(t_base *base);
+
+int		ft_update(t_base *base, int *temp);
+
+void	ft_move_counter(t_base *base);
+
+void	ft_paint(t_base *base);
 //
 
 #endif
