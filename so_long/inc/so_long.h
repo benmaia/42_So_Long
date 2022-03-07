@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/05 19:11:54 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/06 14:24:10 by paijavai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
+# include "../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -30,7 +31,10 @@ typedef enum key {
 }	t_key;
 
 typedef struct s_img {
-    void	*img;
+    void	*img_d;
+	void	*img_l;
+	void	*img_r;
+	void	*img_u;
     char	*address;
     int		bits_per_pixel;
     int		line_length;

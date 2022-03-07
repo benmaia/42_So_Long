@@ -17,7 +17,7 @@ int	ft_n_pointer(unsigned long int nbr, char *base)
 	int	counter;
 
 	counter = 0;
-	if (nbr < 0)
+	if (nbr <= 0)
 	{
 		nbr *= -1;
 		write(1, "-", 1);
