@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:38:01 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 13:02:52 by paijavai         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:19:13 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int	ft_key_hook_down(int keycode, t_base *base)
 {
-	printf("%i\n", keycode);
 	if (keycode == W)
 		base->keys.w = 1;
 	if (keycode == S)

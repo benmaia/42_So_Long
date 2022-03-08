@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 13:22:51 by paijavai         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:28:25 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_base	*ft_init_struct(void)
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
 	{
-		//write(1, "Error\n", 6);
+		write(1, "Error\n", 6);
 		return (0);
 	}
 	base->win_x = 1000;
@@ -43,20 +43,13 @@ void	init_keys(t_base *base)
 /*Set the 4 images to the player, his */
 /* pace and his initial position      */
 
-void	init_player(t_base *base)
+void	ft_init_player(t_base *base)
 {
 	base->img_p.x = 0;
 	base->img_p.y = 0;
-	base->img_p.pace = 1;
-	base->img_p.img_s = mlx_xpm_file_to_image(base->mlx, \
-	"frontc.xpm", &base->img_p.width, &base->img_p.height);
-	mlx_put_image_to_window(base->mlx, base-> window, base->img_p.img_s, 0, 0);
-	base->img_p.img_a = mlx_xpm_file_to_image(base->mlx, \
-	"leftc.xpm", &base->img_p.width, &base->img_p.height);
-	base->img_p.img_d = mlx_xpm_file_to_image(base->mlx, \
-	"rightc.xpm", &base->img_p.width, &base->img_p.height);
-	base->img_p.img_w = mlx_xpm_file_to_image(base->mlx, \
-	"backc.xpm", &base->img_p.width, &base->img_p.height);
+	base->img_p.pace = 5;
+	ft_init_player_animation(base);
+	mlx_put_image_to_window(base->mlx, base-> window, base->img_p.img_s[0], 0, 0);
 	base->img_p.img = base->img_p.img_s;
 }
 
@@ -66,7 +59,7 @@ void	init_player(t_base *base)
 void	init_map(t_base *base)
 {
 	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
-	"oooom.xpm", &base->img_0.width, &base->img_0.height);
+	"test.xpm", &base->img_0.width, &base->img_0.height);
 	mlx_put_image_to_window(base->mlx, base-> window, base->img_0.img, 0, 0);
 }
 
@@ -79,6 +72,6 @@ void	ft_init_window(t_base *base)
 	base->win_y, "So Long");
 	init_keys(base);
 	init_map(base);
-	init_player(base);
+	ft_init_player(base);
 	ft_init_struct();
 }
