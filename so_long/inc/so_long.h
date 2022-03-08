@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/07 21:04:11 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:44:17 by paijavai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+// typedef enum key {
+// 	W = 13,
+// 	S = 1,
+// 	A = 0,
+// 	D = 2,
+// 	ESC = 53
+// }	t_key;
+
 typedef enum key {
-	W = 13,
-	S = 1,
-	A = 0,
-	D = 2,
-	ESC = 53
+	W = 119,
+	S = 115,
+	A = 97,
+	D = 100,
+	ESC = 65307
 }	t_key;
 
 typedef struct keys {

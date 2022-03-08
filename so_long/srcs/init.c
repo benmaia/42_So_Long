@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 12:53:46 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:22:51 by paijavai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_base	*ft_init_struct(void)
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
 	{
-		write(1, "Error\n", 6);
+		//write(1, "Error\n", 6);
 		return (0);
 	}
 	base->win_x = 1000;
@@ -47,7 +47,7 @@ void	init_player(t_base *base)
 {
 	base->img_p.x = 0;
 	base->img_p.y = 0;
-	base->img_p.pace = 3;
+	base->img_p.pace = 1;
 	base->img_p.img_s = mlx_xpm_file_to_image(base->mlx, \
 	"frontc.xpm", &base->img_p.width, &base->img_p.height);
 	mlx_put_image_to_window(base->mlx, base-> window, base->img_p.img_s, 0, 0);

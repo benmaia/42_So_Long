@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paijavai <paijavai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 12:20:09 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:02:10 by paijavai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_move_counter(t_base *base)
 		temp = 0;
 		counter++;
 	}
-	ft_printf("Number of moves: %i\n", counter);
+	//printf("Number of moves: %i\n", counter);
 }
 
 /* Prints the image that the update */

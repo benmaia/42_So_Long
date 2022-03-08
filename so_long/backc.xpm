@@ -15,7 +15,7 @@ static char *back[] = {
 "& c #D7906E",
 "* c #549E8E",
 "= c gray65",
-"- c None",
+"- c none",
 /* pixels */
 "-----------------o--------------",
 "-----------ooo--oo-oooo---------",
