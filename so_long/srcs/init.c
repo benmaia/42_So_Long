@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 12:08:39 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:53:46 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	init_player(t_base *base)
 	base->img_p.y = 0;
 	base->img_p.pace = 3;
 	base->img_p.img_s = mlx_xpm_file_to_image(base->mlx, \
-	"front.xpm", &base->img_p.width, &base->img_p.height);
+	"frontc.xpm", &base->img_p.width, &base->img_p.height);
 	mlx_put_image_to_window(base->mlx, base-> window, base->img_p.img_s, 0, 0);
 	base->img_p.img_a = mlx_xpm_file_to_image(base->mlx, \
-	"left.xpm", &base->img_p.width, &base->img_p.height);
+	"leftc.xpm", &base->img_p.width, &base->img_p.height);
 	base->img_p.img_d = mlx_xpm_file_to_image(base->mlx, \
-	"right.xpm", &base->img_p.width, &base->img_p.height);
+	"rightc.xpm", &base->img_p.width, &base->img_p.height);
 	base->img_p.img_w = mlx_xpm_file_to_image(base->mlx, \
-	"back.xpm", &base->img_p.width, &base->img_p.height);
+	"backc.xpm", &base->img_p.width, &base->img_p.height);
 	base->img_p.img = base->img_p.img_s;
 }
 
@@ -66,7 +66,7 @@ void	init_player(t_base *base)
 void	init_map(t_base *base)
 {
 	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
-	"oooo.xpm", &base->img_0.width, &base->img_0.height);
+	"oooom.xpm", &base->img_0.width, &base->img_0.height);
 	mlx_put_image_to_window(base->mlx, base-> window, base->img_0.img, 0, 0);
 }
 
