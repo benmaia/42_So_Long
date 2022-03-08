@@ -48,7 +48,7 @@ $(NAME): $(LIBFT_EXEC) $(OBJ)
 	@mv $(OBJ) build/objs
 	@mkdir -p build/bin
 	@mv $(NAME) build/bin
-	@mv img/*/*.xpm ./
+	@cp img/*/*.xpm ./
 	@echo "$(GREEN)[Success! so_long is ready to use]$(RESET)"
 
 clean:
@@ -57,8 +57,7 @@ clean:
 	@echo "$(YELLOW)[.o files were removed]$(RESET)"
 
 fclean: clean
-	@mv ./*c.xpm img/Character
-	@mv ./*m.xpm img/Map
+	@rm -f *.xpm
 	@rm -rf build $(NAME)
 	@make -s fclean -C $(LIBFT_DIR)
 	@echo "$(RED)[so_long has been removed!]$(RESET)"
