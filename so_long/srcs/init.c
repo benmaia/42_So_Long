@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/07 21:03:15 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:08:39 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ t_base	*ft_init_struct(void)
 	return (base);
 }
 
+/* Set the value of the keys to 0 */
+/* to be able to walk while press */
+
 void	init_keys(t_base *base)
 {
 	base-> keys.a = 0;
@@ -36,6 +39,9 @@ void	init_keys(t_base *base)
 	base-> keys.s = 0;
 	base-> keys.esc = 0;
 }
+
+/*Set the 4 images to the player, his */
+/* pace and his initial position      */
 
 void	init_player(t_base *base)
 {
@@ -54,12 +60,17 @@ void	init_player(t_base *base)
 	base->img_p.img = base->img_p.img_s;
 }
 
+/* Read the .ber file and builds */
+/* the map accordingly           */
+
 void	init_map(t_base *base)
 {
 	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
 	"oooo.xpm", &base->img_0.width, &base->img_0.height);
 	mlx_put_image_to_window(base->mlx, base-> window, base->img_0.img, 0, 0);
 }
+
+/* Setup the game to the window */
 
 void	ft_init_window(t_base *base)
 {

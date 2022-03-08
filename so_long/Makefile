@@ -10,7 +10,7 @@ LIBFT_EXE = libs/libft/libft.a
 MLX_DIR = libs/minilibx
 MLX_LINUX_DIR = libs/minilibx-linux
 
-SRC = srcs/main.c srcs/init.c srcs/moving.c
+SRC = srcs/main.c srcs/init.c srcs/moving.c srcs/paint.c
 
 OBJ = $(SRC:.c=.o)
 
