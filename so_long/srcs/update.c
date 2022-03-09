@@ -6,11 +6,11 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:31:10 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 00:25:31 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:53:47 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 /* Update the W key, chooses */
 /* what frame to be painted  */

@@ -2,21 +2,23 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g -I$(HEADER) 
 
 LIBFT_DIR = libs/libft
-LIBFT_EXE = libs/libft/libft.a
+LIBFT_EXE = -L $(LIBFT_DIR) -lft
 
 MLX_DIR = libs/minilibx
 MLX_LINUX_DIR = libs/minilibx-linux
 
+HEADER = inc
+
+INC = -I$(LIBFT_DIR) -L $(LIBFT_DIR) \
+	  -I$(MLX_DIR) -L $(MLX_DIR) \
+	  -l mlx -framework OpenGL -framework Appkit
+
 SRC = srcs/main.c srcs/init.c srcs/moving.c srcs/paint.c srcs/init_player.c srcs/update.c
 
 OBJ = $(SRC:.c=.o)
-
-INC = -I $(LIBFT_DIR) -L $(LIBFT_DIR) \
-	  -I $(MLX_DIR) -L $(MLX_DIR) \
-	  -l mlx -framework OpenGL -framework Appkit
 
 # Colors #
 GREEN		=	\033[0;32m
@@ -28,13 +30,13 @@ all: $(NAME)
 
 .SILENT: $(OBJS)
 
-$(NAME): $(LIBFT_EXE) $(OBJ)
+$(NAME): $(OBJ)
 	@cat mkart
 	@echo "$(YELLOW)[Initializing so_long ...]$(RESET)"
 	@echo "$(YELLOW)[Compiling libft ...]$(RESET)"
 	@make -C $(LIBFT_DIR)
 	@echo "$(YELLOW)[Compiling so_long ...]$(RESET)"
-	@$(CC) $(CFLAGS) $(LIBFT_EXE) $(OBJ) -o $(NAME) $(INC)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_EXE) -o $(NAME) $(INC)
 	@echo "$(YELLOW)[Creating build dir ...]$(RESET)"
 	@mkdir -p build \build/objs
 	@echo "$(YELLOW)[Creating .o files ...]$(RESET)"

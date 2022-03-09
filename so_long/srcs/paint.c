@@ -6,11 +6,11 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 00:13:36 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 01:21:00 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 /* Has the update receives the  */
 /* key value and updates the    */
@@ -24,7 +24,7 @@ void	ft_move_counter(t_base *base)
 	static int	counter;
 
 	ft_update(base);
-	if (base->move_counter >= 9)
+	if (base->move_counter >= 5)
 	{
 		base->move_counter = 0;
 		counter++;

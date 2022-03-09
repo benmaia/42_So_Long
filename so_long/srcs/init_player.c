@@ -6,11 +6,11 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:09:05 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 00:36:18 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:53:56 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 /* Init the S frames to animation */
 /* Puts the image to the struct   */

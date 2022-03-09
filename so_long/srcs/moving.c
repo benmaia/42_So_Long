@@ -6,11 +6,11 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:38:01 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 15:19:13 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:53:11 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 /* Sets the value of the key    */
 /* to 1 while pressing the key  */
