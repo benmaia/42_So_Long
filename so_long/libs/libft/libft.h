@@ -127,7 +127,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 
 # ifndef OPEN_MAX
-# define OPEN_MAX 256
+#  define OPEN_MAX 256
 # endif
 
 # ifndef BUFFER_SIZE

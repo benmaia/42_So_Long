@@ -1,65 +1,89 @@
-NAME = so_long
+#include the mlx header which in my linux computer is located here...(also in 42 coputers...)
+INC = libs/minilibx
 
-CC = gcc
+LIBFT_DIR = libs/libft #include the library libft path for linking later with -L
 
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g -I$(HEADER) 
+LIBFT_SRC = $(LIBFT_DIR) $(wildcard src/*.c)
 
-LIBFT_DIR = libs/libft
-LIBFT_EXE = -L $(LIBFT_DIR) -lft
+MLX_DIR = $(INC) #include the mlx lib which in my linux computer is located here... (also in 42 computers...)
 
-MLX_DIR = libs/minilibx
-MLX_LINUX_DIR = libs/minilibx-linux
+INCS = inc #so_long "include" folder, which is the standard but in your project is "inc"... so you might want to change either this var or your folder name
 
-HEADER = inc
+OS := $(shell uname)
 
-INC = -I$(LIBFT_DIR) -L $(LIBFT_DIR) \
-	  -I$(MLX_DIR) -L $(MLX_DIR) \
-	  -l mlx -framework OpenGL -framework Appkit
+CFLAGS= -Wall -Werror -Wextra -I$(INC) -O3 -I.. -I$(INCS) -g #Here I link the mlx header and the the so_long project header
+
+NAME= so_long
 
 SRC = srcs/main.c srcs/init.c srcs/moving.c srcs/paint.c srcs/init_player.c srcs/update.c
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:%.c=%.o)
+
+LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -lXext -lX11 -lm -L$(LIBFT_DIR) -lft #Link the mlx Library and the Libft and standard GC libraries for linux and FreeSBD
 
 # Colors #
 GREEN		=	\033[0;32m
 YELLOW		=	\033[0;33m
 RED			=	\033[0;31m
+CYAN		=	\033[4;33m
 RESET       =   \033[0m
+
+ifeq ($(OS), Darwin)
+	# mac
+	CC = gcc
+	LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -framework OpenGL -framework AppKit -L${LIBFT_DIR} -lft #Link the mlx Library and the Libft and the graphic Frameworks for Dawrin (iMac)
+else ifeq ($(OS), FreeBSD)
+	# FreeBSD
+	CC = clang
+else
+	#Linux and others...
+	CC	= gcc
+	LFLAGS += -lbsd
+endif
 
 all: $(NAME)
 
-.SILENT: $(OBJS)
+.SILENT: $(OBJ)
 
-$(NAME): $(OBJ)
-	@cat mkart
-	@echo "$(YELLOW)[Initializing so_long ...]$(RESET)"
-	@echo "$(YELLOW)[Compiling libft ...]$(RESET)"
-	@make -C $(LIBFT_DIR)
-	@echo "$(YELLOW)[Compiling so_long ...]$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_EXE) -o $(NAME) $(INC)
-	@echo "$(YELLOW)[Creating build dir ...]$(RESET)"
+$(NAME): show runlibft $(OBJ)
+	@echo "$(YELLOW)[      Compiling so_long ...     ]$(RESET)"
+	@$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 	@mkdir -p build \build/objs
-	@echo "$(YELLOW)[Creating .o files ...]$(RESET)"
 	@mv $(OBJ) build/objs
 	@mkdir -p build/bin
 	@mv $(NAME) build/bin
 	@cp img/*/*.xpm ./
-	@echo "$(GREEN)[Success! so_long is ready to use]$(RESET)"
+	@echo "$(GREEN)[ Success! so_long is ready play ]$(RESET)"
+
+
+show:
+	@cat mkart
+	@echo " [  OS : $(CYAN)$(OS)$(RESET)  ]\n"
+	@echo "[  NAME : $(CYAN)$(NAME)$(RESET)  ]\n"
+	@echo "$(YELLOW)[    Initializing so_long ...    ]$(RESET)"
+
+runlibft:
+
+	@echo "$(YELLOW)[       Compiling libft ...      ]$(RESET)"
+	@make -s -C $(LIBFT_DIR) all
+
+norm:
+	norminette -R CheckForbiddenSourceHeader $(SRC)
+	norminette -R CheckDefine inc/so_long.h
+	norminette -R CheckForbiddenSourceHeader $(LIBFT_SRC)
 
 clean:
-	@rm -rf obj $(OBJS) $(NAME)
+	@rm -rf build/objs
 	@make -s clean -C $(LIBFT_DIR)
-	@echo "$(YELLOW)[.o files were removed]$(RESET)"
+	@echo "\n$(YELLOW)[      objects were removed      ]$(RESET)"
 
 fclean: clean
-	@rm -f *.xpm
-	@rm -rf build $(NAME)
 	@make -s fclean -C $(LIBFT_DIR)
-	@echo "$(RED)[so_long has been removed!]$(RESET)"
+	@rm -rf build
+	@rm -rf *.xpm
+	@echo "$(RED)[    So_long has been removed!   ]$(RESET)"
 
-re: fclean all
-
-exe: all
+exe: norm all
 	@build/bin/./so_long
 
-.PHONY: all clean fclean re
+re: fclean all

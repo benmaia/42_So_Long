@@ -29,6 +29,8 @@ get_next_line.c
 #Object files
 OBJ	=	$(SRC:.c=.o)
 
+.SILENT: $(OBJ)
+
 #Compile with the flags
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(HEADER)
@@ -43,14 +45,14 @@ all:	$(NAME)
 
 $(NAME):    $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "$(GREEN)[libft.a has been created!]$(RESET)"
+	@echo "$(GREEN)[    Libft.a has been created!   ]$(RESET)"
 
 clean:
 	@$(RM) $(OBJ)
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(RED)[libft.a has been removed!]$(RESET)"
+	@echo "$(RED)[    libft.a has been removed!   ]$(RESET)"
 
 re: fclean $(NAME)
 
