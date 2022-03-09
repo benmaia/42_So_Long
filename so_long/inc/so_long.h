@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 19:41:07 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:16:13 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
-//# include "../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -87,7 +86,7 @@ int		ft_key_hook_down(int keycode, t_base *base);
 
 int		ft_hook(t_base *base);
 
-int		ft_update(t_base *base, int *temp);
+void		ft_update(t_base *base);
 
 void	ft_move_counter(t_base *base);
 

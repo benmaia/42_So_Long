@@ -6,11 +6,14 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:09:05 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 19:42:16 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:36:18 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+/* Init the S frames to animation */
+/* Puts the image to the struct   */
 
 void	ft_init_player_front(t_base *base)
 {
@@ -22,6 +25,9 @@ void	ft_init_player_front(t_base *base)
 	"front3.xpm", &base->img_p.width, &base->img_p.height);
 }
 
+/* Init the A frames to animation */
+/* Puts the image to the struct   */
+
 void	ft_init_player_left(t_base *base)
 {
 	base->img_p.img_a[0] = mlx_xpm_file_to_image(base->mlx, \
@@ -31,6 +37,9 @@ void	ft_init_player_left(t_base *base)
 	base->img_p.img_a[2] = mlx_xpm_file_to_image(base->mlx, \
 	"left3.xpm", &base->img_p.width, &base->img_p.height);
 }
+
+/* Init the D frames to animation */
+/* Puts the image to the struct   */
 
 void	ft_init_player_right(t_base *base)
 {
@@ -42,6 +51,9 @@ void	ft_init_player_right(t_base *base)
 	"right3.xpm", &base->img_p.width, &base->img_p.height);
 }
 
+/* Init the W frames to animation */
+/* Puts the image to the struct   */
+
 void	ft_init_player_back(t_base *base)
 {
 	base->img_p.img_w[0] = mlx_xpm_file_to_image(base->mlx, \
@@ -51,6 +63,9 @@ void	ft_init_player_back(t_base *base)
 	base->img_p.img_w[2] = mlx_xpm_file_to_image(base->mlx, \
 	"back3.xpm", &base->img_p.width, &base->img_p.height);
 }
+
+/* Init the walking frames to animation */
+/* of the player character              */
 
 void	ft_init_player_animation(t_base *base)
 {

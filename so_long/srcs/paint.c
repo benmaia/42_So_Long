@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/08 19:42:59 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:13:36 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 void	ft_move_counter(t_base *base)
 {
 	static int	counter;
-	static int	temp;
 
-	temp = ft_update(base, &temp);
-	if (temp >= 9)
+	ft_update(base);
+	if (base->move_counter >= 9)
 	{
-		temp = 0;
+		base->move_counter = 0;
 		counter++;
 	}
 	ft_printf("Number of moves: %i\n", counter);

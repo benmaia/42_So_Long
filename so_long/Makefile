@@ -17,10 +17,6 @@ OBJ = $(SRC:.c=.o)
 INC = -I $(LIBFT_DIR) -L $(LIBFT_DIR) \
 	  -I $(MLX_DIR) -L $(MLX_DIR) \
 	  -l mlx -framework OpenGL -framework Appkit
-	  #-I $(MLX_LINUX_DIR) -L $(MLX_LINUX_DIR)
-	  
-
-	  
 
 # Colors #
 GREEN		=	\033[0;32m
@@ -28,21 +24,17 @@ YELLOW		=	\033[0;33m
 RED			=	\033[0;31m
 RESET       =   \033[0m
 
-#%.o: %.c
-#	$(CC) -Wall -Wextra -Werror -I$(MLX_LINUX_DIR) -Imlx_linux -O3 -c $< -o $@
-
 all: $(NAME)
 
 .SILENT: $(OBJS)
 
-$(NAME): $(LIBFT_EXEC) $(OBJ)
+$(NAME): $(LIBFT_EXE) $(OBJ)
 	@cat mkart
 	@echo "$(YELLOW)[Initializing so_long ...]$(RESET)"
 	@echo "$(YELLOW)[Compiling libft ...]$(RESET)"
 	@make -C $(LIBFT_DIR)
 	@echo "$(YELLOW)[Compiling so_long ...]$(RESET)"
 	@$(CC) $(CFLAGS) $(LIBFT_EXE) $(OBJ) -o $(NAME) $(INC)
-	#@$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L $(MLX_LINUX_DIR) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "$(YELLOW)[Creating build dir ...]$(RESET)"
 	@mkdir -p build \build/objs
 	@echo "$(YELLOW)[Creating .o files ...]$(RESET)"
