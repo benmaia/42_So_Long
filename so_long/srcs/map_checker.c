@@ -104,6 +104,7 @@ int	check_map_size(t_base *base, char **map)
 	int	j;
 
 	i = -1;
+	j = 0;
 	while (map[++i])
 	{
 		j = -1;

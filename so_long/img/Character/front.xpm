@@ -37,7 +37,7 @@ static char *front[] = {
 "r c gray85",
 "t c gray95",
 "y c white",
-"u c None",
+"u c none",
 /* pixels */
 "uuuuuuuuuuuuuuu#uuuuuuuuuuuuuuuu",
 "uuuuuuuuuu####u##uu###uuuuuuuuuu",

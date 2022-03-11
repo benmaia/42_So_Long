@@ -13,26 +13,27 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libs/libft/libft.h"
-# include "../libs/minilibx/mlx.h"
+# include "libft.h"
+# include <mlx.h>
+#include "mlx_int.h"
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef enum s_key {
+/*typedef enum s_key {
 	W = 13,
 	S = 1,
 	A = 0,
 	D = 2,
 	ESC = 53
 }	t_key;
-
-// typedef enum key {
-// 	W = 119,
-// 	S = 115,
-// 	A = 97,
-// 	D = 100,
-// 	ESC = 65307
-// }	t_key;
+*/
+typedef enum key {
+ 	W = 119,
+ 	S = 115,
+ 	A = 97,
+ 	D = 100,
+ 	ESC = 65307
+}	t_key;
 
 typedef struct s_keys {
 	int	w;
@@ -42,7 +43,7 @@ typedef struct s_keys {
 	int	esc;
 }	t_keys;
 
-typedef struct s_img {
+typedef struct s_imgs {
 	void	*img_w[3];
 	void	*img_s[3];
 	void	*img_d[3];
@@ -57,7 +58,7 @@ typedef struct s_img {
 	int		pace;
 	int		x;
 	int		y;
-}	t_img;
+}	t_imgs;
 
 typedef struct s_base {
 	void	*mlx;
@@ -67,11 +68,11 @@ typedef struct s_base {
 	int		win_x;
 	int		win_y;
 	int		move_counter;
-	t_img	img_0;
-	t_img	img_1;
-	t_img	img_p;
-	t_img	img_c;
-	t_img	img_e;
+	t_imgs	img_0;
+	t_imgs	img_1;
+	t_imgs	img_p;
+	t_imgs	img_c;
+	t_imgs	img_e;
 	t_keys	keys;
 }		t_base;
 

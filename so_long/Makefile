@@ -1,27 +1,24 @@
-#include the mlx header which in my linux computer is located here...(also in 42 coputers...)
-INC = libs/minilibx
+INC=/usr/include
 
-LIBFT_DIR = libs/libft #include the library libft path for linking later with -L
+INCLIB=$(INC)/../lib
+
+LIBFT_DIR = libs/libft
 
 LIBFT_SRC = $(LIBFT_DIR) $(wildcard src/*.c)
 
-MLX_DIR = $(INC) #include the mlx lib which in my linux computer is located here... (also in 42 computers...)
-
-INCS = inc #so_long "include" folder, which is the standard but in your project is "inc"... so you might want to change either this var or your folder name
+INCS = inc
 
 OS := $(shell uname)
 
-CFLAGS= -Wall -Werror -Wextra -I$(INC) -O3 -I.. -I$(INCS) -g #Here I link the mlx header and the the so_long project header
+CFLAGS= -Wall -Werror -Wextra -I$(INC) -O3 -I$(INCS) -I$(LIBFT_DIR) -g
 
 NAME= so_long
 
 SRC = srcs/main.c srcs/init.c srcs/moving.c \
 srcs/paint.c srcs/init_player.c srcs/animation_player.c \
-srcs/init_map.c srcs/map_checker.c 
+srcs/init_map.c srcs/map_checker.c
 
 OBJ = $(SRC:%.c=%.o)
-
-LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -lXext -lX11 -lm -L$(LIBFT_DIR) -lft #Link the mlx Library and the Libft and standard GC libraries for linux and FreeSBD
 
 # Colors #
 GREEN		=	\033[0;32m
@@ -30,26 +27,34 @@ RED			=	\033[0;31m
 CYAN		=	\033[4;33m
 RESET       =   \033[0m
 
+LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -lXext -lX11 -lm -L$(INCLIB) -L$(LIBFT_DIR) -lft
+
 ifeq ($(OS), Darwin)
 	# mac
 	CC = gcc
-	LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -framework OpenGL -framework AppKit -L${LIBFT_DIR} -lft #Link the mlx Library and the Libft and the graphic Frameworks for Dawrin (iMac)
+	INC = libs/minilibx
+	LFLAGS = -L$(MLX_DIR) -lmlx -L$(MLX_DIR) -framework OpenGL -framework AppKit -L${LIBFT_DIR} -lft
 else ifeq ($(OS), FreeBSD)
 	# FreeBSD
-	CC = clang
+	CC	= clang
+	INC	= libs/minilibx-linux
 else
 	#Linux and others...
 	CC	= gcc
-	LFLAGS += -lbsd
+	INC	= libs/minilibx-linux
+
+	LFLAGS	+= -lbsd
 endif
+
+MLX_DIR = $(INC)
 
 all: $(NAME)
 
-.SILENT: $(OBJ)
+#.SILENT: $(OBJ)
 
 $(NAME): show runlibft $(OBJ)
 	@echo "$(YELLOW)[      Compiling so_long ...     ]$(RESET)"
-	@$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 	@mkdir -p build \build/objs
 	@mv $(OBJ) build/objs
 	@mkdir -p build/bin
@@ -74,6 +79,7 @@ norm:
 	norminette -R CheckForbiddenSourceHeader $(LIBFT_SRC)
 
 clean:
+	@rm -rf $(OBJ)
 	@rm -rf build/objs
 	@make -s clean -C $(LIBFT_DIR)
 	@echo "\n$(YELLOW)[      objects were removed      ]$(RESET)"

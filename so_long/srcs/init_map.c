@@ -56,10 +56,8 @@ void	ft_init_map(t_base *base)
 int	ft_checker(t_base *base, char **argv)
 {
 	int		fd;
-	int		i;
 
 	fd = get_fd(argv);
-	i = 0;
 	base->map = read_map(fd);
 	if (!check_map_size(base, base->map))
 	{

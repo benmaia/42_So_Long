@@ -15,13 +15,15 @@
 t_base	*ft_init_struct(void)
 {
 	t_base	*base;
+	ssize_t	c;
 
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
 	{
-		write(1, "Error\n", 6);
+		c = write(1, "Error\n", 6);
 		return (0);
 	}
+	(void)c;
 	base->move_counter = 0;
 	return (base);
 }
