@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 00:50:19 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:44:03 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef enum key {
+typedef enum s_key {
 	W = 13,
 	S = 1,
 	A = 0,
@@ -34,7 +34,7 @@ typedef enum key {
 // 	ESC = 65307
 // }	t_key;
 
-typedef struct keys {
+typedef struct s_keys {
 	int	w;
 	int	s;
 	int	a;
@@ -62,6 +62,7 @@ typedef struct s_img {
 typedef struct s_base {
 	void	*mlx;
 	void	*window;
+	void	***maps;
 	char	**map;
 	int		win_x;
 	int		win_y;
@@ -73,8 +74,6 @@ typedef struct s_base {
 	t_img	img_e;
 	t_keys	keys;
 }		t_base;
-
-int		main(void);
 
 t_base	*ft_init_struct(void);
 
@@ -95,5 +94,32 @@ void	ft_paint(t_base *base);
 void	ft_init_animations(t_base *base);
 
 void	ft_init_player_animation(t_base *base);
+
+void	ft_map_ini(int argc, char **argv, t_base *base);
+
+int		map_checker(char **map);
+
+int		ft_checker(t_base *base, char **argv);
+
+int		get_fd(char **argv);
+
+char	**read_map(int fd);
+
+int		check_map_close(char **map);
+
+int		check_map_size(t_base *base, char **map);
+
+int		check_map_playble(t_base *base, char **map);
+
+void	map_print(t_base *base);
+
+void	map_start(t_base *base);
+
+
+
+void	init_map(t_base *base);
+void	ft_init_player(t_base *base);
+void	init_keys(t_base *base);
+t_base	*ft_init_struct(void);
 
 #endif

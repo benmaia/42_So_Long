@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 13:03:41 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:42:42 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ t_base	*ft_init_struct(void)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	base->win_x = 1000;
-	base->win_y = 1000;
 	base->move_counter = 0;
 	return (base);
 }
@@ -49,9 +47,9 @@ void	ft_init_player(t_base *base)
 	base->img_p.y = 0;
 	base->img_p.pace = 6;
 	ft_init_player_animation(base);
-	mlx_put_image_to_window(base->mlx, base-> window, \
-	base->img_p.img_s[0], 0, 0);
 	base->img_p.img = base->img_p.img_s;
+	mlx_put_image_to_window(base->mlx, base-> window, \
+	base->img_p.img, base->img_p.x, base->img_p.y);
 }
 
 /* Read the .ber file and builds */
@@ -60,8 +58,13 @@ void	ft_init_player(t_base *base)
 void	init_map(t_base *base)
 {
 	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
-	"test.xpm", &base->img_0.width, &base->img_0.height);
-	mlx_put_image_to_window(base->mlx, base-> window, base->img_0.img, 0, 0);
+	"tile_0.xpm", &base->img_0.width, &base->img_0.height);
+	base->img_1.img = mlx_xpm_file_to_image(base->mlx, \
+	"tile_1.xpm", &base->img_1.width, &base->img_1.height);
+	base->img_c.img = mlx_xpm_file_to_image(base->mlx, \
+	"tile_c.xpm", &base->img_c.width, &base->img_c.height);
+	base->img_e.img = mlx_xpm_file_to_image(base->mlx, \
+	"tile_e.xpm", &base->img_e.width, &base->img_e.height);
 }
 
 /* Setup the game to the window */
@@ -74,5 +77,7 @@ void	ft_init_window(t_base *base)
 	init_keys(base);
 	init_map(base);
 	ft_init_player(base);
+	mlx_put_image_to_window(base->mlx, base-> window, \
+	base->img_p.img, base->img_p.x, base->img_p.y);
 	ft_init_struct();
 }

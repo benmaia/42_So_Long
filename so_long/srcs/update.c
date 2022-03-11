@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:31:10 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 13:03:28 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:42:45 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_update(t_base *base)
 {
 	static int	pace;
 
-	if (pace++ < 3)
+	if (pace++ < 2)
 		return ;
 	pace = 0;
 	ft_update_up(base);

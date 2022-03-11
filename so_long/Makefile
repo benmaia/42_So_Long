@@ -15,7 +15,9 @@ CFLAGS= -Wall -Werror -Wextra -I$(INC) -O3 -I.. -I$(INCS) -g #Here I link the ml
 
 NAME= so_long
 
-SRC = srcs/main.c srcs/init.c srcs/moving.c srcs/paint.c srcs/init_player.c srcs/update.c
+SRC = srcs/main.c srcs/init.c srcs/moving.c \
+srcs/paint.c srcs/init_player.c srcs/update.c \
+srcs/init_map.c srcs/map_checker.c 
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -63,7 +65,6 @@ show:
 	@echo "$(YELLOW)[    Initializing so_long ...    ]$(RESET)"
 
 runlibft:
-
 	@echo "$(YELLOW)[       Compiling libft ...      ]$(RESET)"
 	@make -s -C $(LIBFT_DIR) all
 
@@ -83,7 +84,7 @@ fclean: clean
 	@rm -rf *.xpm
 	@echo "$(RED)[    So_long has been removed!   ]$(RESET)"
 
-exe: norm all
-	@build/bin/./so_long
+exe: all
+	@build/bin/./so_long map.ber
 
 re: fclean all
