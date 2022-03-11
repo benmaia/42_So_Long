@@ -29,8 +29,6 @@ get_next_line.c
 #Object files
 OBJ	=	$(SRC:.c=.o)
 
-.SILENT: $(OBJ)
-
 #Compile with the flags
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(HEADER)
@@ -44,6 +42,7 @@ RESET       =   \033[0m
 all:	$(NAME)
 
 $(NAME):    $(OBJ)
+	@echo "$(YELLOW)[       Compiling libft ...      ]$(RESET)"
 	@ar rcs $(NAME) $(OBJ)
 	@echo "$(GREEN)[    Libft.a has been created!   ]$(RESET)"
 
