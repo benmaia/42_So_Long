@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 00:44:03 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:28:02 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		ft_key_hook_down(int keycode, t_base *base);
 
 int		ft_hook(t_base *base);
 
-void	ft_update(t_base *base);
+void	ft_update_player(t_base *base);
 
 void	ft_move_counter(t_base *base);
 
@@ -109,15 +109,14 @@ int		check_map_close(char **map);
 
 int		check_map_size(t_base *base, char **map);
 
-int		check_map_playble(t_base *base, char **map);
+int		check_map_playble(char **map);
 
 void	map_print(t_base *base);
 
 void	map_start(t_base *base);
 
+void	ft_init_map(t_base *base);
 
-
-void	init_map(t_base *base);
 void	ft_init_player(t_base *base);
 void	init_keys(t_base *base);
 t_base	*ft_init_struct(void);

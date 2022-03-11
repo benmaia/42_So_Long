@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 00:59:51 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:29:14 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_move_counter(t_base *base)
 	static int	counter;
 	static int	steps;
 
-	ft_update(base);
+	ft_update_player(base);
 	steps = counter;
 	if (base->move_counter >= 2)
 	{
@@ -34,12 +34,10 @@ void	ft_move_counter(t_base *base)
 	if (counter == steps)
 		return ;
 	ft_printf("Number of moves: %i\n", counter);
-	ft_printf("base->img_p.x: %i\n base->img_p.y: %i\n", base->img_p.x, base->img_p.y);
-	
 }
 
-/* Prints the image that the update */
-/* chooses as the right one and     */
+/* Responsible to print */
+/* everything in loop   */
 
 void	ft_paint(t_base *base)
 {

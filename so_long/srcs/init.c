@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 01:04:10 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:27:08 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_base	*ft_init_struct(void)
 /* Set the value of the keys to 0 */
 /* to be able to walk while press */
 
-void	init_keys(t_base *base)
+void	ft_init_keys(t_base *base)
 {
 	base-> keys.a = 0;
 	base-> keys.d = 0;
@@ -43,26 +43,27 @@ void	init_keys(t_base *base)
 
 void	ft_init_player(t_base *base)
 {
+	int	i;
+	int	j;
+
+	i = -1;
+	while (base->map[++i])
+	{
+		j = -1;
+		while (base->map[i][++j])
+		{
+			if (base->map[i][j] == 'P')
+			{
+				base->img_p.x = j * 32;
+				base->img_p.y = i * 32;
+			}
+		}
+	}
 	base->img_p.pace = 4;
 	ft_init_player_animation(base);
 	base->img_p.img = base->img_p.img_s[0];
 	mlx_put_image_to_window(base->mlx, base-> window, \
 	base->img_p.img, base->img_p.x, base->img_p.y);
-}
-
-/* Read the .ber file and builds */
-/* the map accordingly           */
-
-void	init_map(t_base *base)
-{
-	base->img_0.img = mlx_xpm_file_to_image(base->mlx, \
-	"tile_0.xpm", &base->img_0.width, &base->img_0.height);
-	base->img_1.img = mlx_xpm_file_to_image(base->mlx, \
-	"tile_1.xpm", &base->img_1.width, &base->img_1.height);
-	base->img_c.img = mlx_xpm_file_to_image(base->mlx, \
-	"tile_c.xpm", &base->img_c.width, &base->img_c.height);
-	base->img_e.img = mlx_xpm_file_to_image(base->mlx, \
-	"tile_e.xpm", &base->img_e.width, &base->img_e.height);
 }
 
 /* Setup the game to the window */
@@ -72,8 +73,8 @@ void	ft_init_window(t_base *base)
 	base->mlx = mlx_init();
 	base->window = mlx_new_window(base->mlx, base->win_x, \
 	base->win_y, "So Long");
-	init_keys(base);
-	init_map(base);
+	ft_init_keys(base);
+	ft_init_map(base);
 	ft_init_player(base);
 	ft_init_struct();
 }
