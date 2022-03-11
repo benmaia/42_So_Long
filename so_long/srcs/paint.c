@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 00:40:51 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:59:51 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_move_counter(t_base *base)
 	if (counter == steps)
 		return ;
 	ft_printf("Number of moves: %i\n", counter);
+	ft_printf("base->img_p.x: %i\n base->img_p.y: %i\n", base->img_p.x, base->img_p.y);
+	
 }
 
 /* Prints the image that the update */
