@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:29:44 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 13:28:21 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/12 15:03:42 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_init_map(t_base *base)
 	base->img_1.img = mlx_xpm_file_to_image(base->mlx, \
 	"tile_1.xpm", &base->img_1.width, &base->img_1.height);
 	base->img_c.img = mlx_xpm_file_to_image(base->mlx, \
-	"tile_c.xpm", &base->img_c.width, &base->img_c.height);
+	"tile_c0.xpm", &base->img_c.width, &base->img_c.height);
 	base->img_e.img = mlx_xpm_file_to_image(base->mlx, \
 	"tile_e.xpm", &base->img_e.width, &base->img_e.height);
 }
@@ -62,17 +62,17 @@ int	ft_checker(t_base *base, char **argv)
 	if (!check_map_size(base, base->map))
 	{
 		ft_printf("Size Error [1]\n");
-		return (0);
+		return(0);
 	}
 	if (!check_map_close(base->map))
 	{
 		ft_printf("The map has to be close by walls [2]\n");
-		return (0);
+		return(0);
 	}
 	if (!check_map_playble(base->map))
 	{
 		ft_printf("The map is not playable [3]\n");
-		return (0);
+		return(0);
 	}
 	return (1);
 }
@@ -98,8 +98,12 @@ void	map_print(t_base *base)
 				mlx_put_image_to_window(base->mlx, base-> window, \
 				base->img_c.img, j * 32, i * 32);
 			else if (base->map[i][j] == 'E')
+			{
+				mlx_put_image_to_window(base->mlx, base-> window, \
+				base->img_0.img, j * 32, i * 32);
 				mlx_put_image_to_window(base->mlx, base-> window, \
 				base->img_e.img, j * 32, i * 32);
+			}
 			else
 				mlx_put_image_to_window(base->mlx, base-> window, \
 				base->img_0.img, j * 32, i * 32);

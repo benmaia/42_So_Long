@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:38:01 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/09 00:53:11 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:57:39 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_key_hook_down(int keycode, t_base *base)
 	if (keycode == A)
 		base->keys.a = 1;
 	if (keycode == ESC)
-		exit(EXIT_SUCCESS);
+		exit_s(base);
 	return (1);
 }
 
@@ -48,7 +48,7 @@ int	ft_key_hook_up(int keycode, t_base *base)
 	if (keycode == A)
 		base->keys.a = 0;
 	if (keycode == ESC)
-		exit(EXIT_SUCCESS);
+		exit_s(base);
 	return (1);
 }
 

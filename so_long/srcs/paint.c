@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:02:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 13:29:14 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:45:41 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_move_counter(t_base *base)
 void	ft_paint(t_base *base)
 {
 	map_print(base);
+	update_collectible(base);
+	update_exit(base);
 	mlx_put_image_to_window(base->mlx, \
 	base->window, base->img_p.img, base->img_p.x, base->img_p.y);
 }

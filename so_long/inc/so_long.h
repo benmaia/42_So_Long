@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 19:50:35 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:55:45 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_imgs {
 typedef struct s_base {
 	void	*mlx;
 	void	*window;
-	void	***maps;
 	char	**map;
 	int		win_x;
 	int		win_y;
@@ -121,5 +120,11 @@ void	ft_init_map(t_base *base);
 void	ft_init_player(t_base *base);
 void	init_keys(t_base *base);
 t_base	*ft_init_struct(void);
+
+void	update_collectible(t_base *base);
+
+void	update_exit(t_base *base);
+
+void	exit_s(t_base *base);
 
 #endif

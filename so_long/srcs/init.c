@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 13:27:08 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:57:08 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 t_base	*ft_init_struct(void)
 {
 	t_base	*base;
-	ssize_t	c;
 
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
 	{
-		c = write(1, "Error\n", 6);
 		return (0);
 	}
-	(void)c;
 	base->move_counter = 0;
 	return (base);
 }

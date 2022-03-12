@@ -39,7 +39,7 @@ all: $(NAME)
 
 .SILENT: $(OBJ)
 
-$(NAME): show norm runlibft $(OBJ)
+$(NAME): show runlibft $(OBJ)
 	@echo "$(YELLOW)[      Compiling so_long ...     ]$(RESET)"	
 	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LFLAGS)
 	@mkdir -p build \build/objs
