@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:43:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/12 14:46:10 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:37:36 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_init_exit(t_base *base)
 {
 	static int	i;
 	static int	pace;
-	
+
 	base->img_e.img_w[0] = mlx_xpm_file_to_image(base->mlx, \
 	"tile_e.xpm", &base->img_e.width, &base->img_e.height);
 	base->img_e.img_w[1] = mlx_xpm_file_to_image(base->mlx, \
@@ -39,7 +39,7 @@ void	update_exit(t_base *base)
 
 	i = -1;
 	ft_init_exit(base);
-	while(base->map[++i])
+	while (base->map[++i])
 	{
 		j = -1;
 		while (base->map[i][++j])
@@ -50,6 +50,9 @@ void	update_exit(t_base *base)
 				base->img_e.y = i * 32;
 				mlx_put_image_to_window(base->mlx, base->window, \
 				base->img_e.img, base->img_e.x, base->img_e.y);
+				if (base->img_p.x == j * 32 && base->img_p.y == i * 32)
+					if (base->img_c.counter >= base->img_c.nbr)
+						exit_s(base);
 			}
 		}
 	}

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_collectible.c                                 :+:      :+:    :+:   */
+/*   init_enemy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 14:21:29 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/14 14:28:41 by bmiguel-         ###   ########.fr       */
+/*   Created: 2022/03/14 14:41:19 by bmiguel-          #+#    #+#             */
+/*   Updated: 2022/03/14 21:31:39 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_init_collectible(t_base *base)
+void	ft_init_enemy(t_base *base)
 {
 	static int	i;
 	static int	pace;
 
-	base->img_c.img_w[0] = mlx_xpm_file_to_image(base->mlx, \
-	"tile_c0.xpm", &base->img_c.width, &base->img_c.height);
-	base->img_c.img_w[1] = mlx_xpm_file_to_image(base->mlx, \
-	"tile_c1.xpm", &base->img_c.width, &base->img_c.height);
-	base->img_c.img_w[2] = mlx_xpm_file_to_image(base->mlx, \
-	"tile_c2.xpm", &base->img_c.width, &base->img_c.height);
-	base->img_c.img = base->img_c.img_w[i];
+	base->img_x.img_w[0] = mlx_xpm_file_to_image(base->mlx, \
+	"tile_d0.xpm", &base->img_x.width, &base->img_x.height);
+	base->img_x.img_w[1] = mlx_xpm_file_to_image(base->mlx, \
+	"tile_d1.xpm", &base->img_x.width, &base->img_x.height);
+	base->img_x.img_w[2] = mlx_xpm_file_to_image(base->mlx, \
+	"tile_d2.xpm", &base->img_x.width, &base->img_x.height);
+	base->img_x.img = base->img_x.img_w[i];
 	if (pace++ < 7)
 		return ;
 	pace = 0;
@@ -32,37 +32,32 @@ void	ft_init_collectible(t_base *base)
 		i = 0;
 }
 
-void	puff(t_base *base, int i, int j)
+void	puff_enemy(t_base *base, int i, int j)
 {
 	if (base->img_p.x == j * 32 && base->img_p.y == i * 32)
-	{
-		base->map[i][j] = '0';
-		base->img_c.counter++;
-	}
+		exit_s(base);
 	else
-	{
 		mlx_put_image_to_window(base->mlx, base->window, \
-		base->img_c.img, base->img_c.x, base->img_c.y);
-	}
+		base->img_x.img, base->img_x.x, base->img_x.y);
 }
 
-void	update_collectible(t_base *base)
+void	update_enemy(t_base *base)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	ft_init_collectible(base);
+	ft_init_enemy(base);
 	while (base->map[++i])
 	{
 		j = -1;
 		while (base->map[i][++j])
 		{
-			if (base->map[i][j] == 'C')
+			if (base->map[i][j] == 'X')
 			{
-				base->img_c.x = j * 32;
-				base->img_c.y = i * 32;
-				puff(base, i, j);
+				base->img_x.x = j * 32;
+				base->img_x.y = i * 32;
+				puff_enemy(base, i, j);
 			}
 		}
 	}

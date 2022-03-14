@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 13:21:45 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/12 14:57:08 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:01:33 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_init_player(t_base *base)
 			}
 		}
 	}
-	base->img_p.pace = 4;
+	base->img_p.pace = 32;
 	ft_init_player_animation(base);
 	base->img_p.img = base->img_p.img_s[0];
 	mlx_put_image_to_window(base->mlx, base-> window, \
@@ -75,5 +75,4 @@ void	ft_init_window(t_base *base)
 	ft_init_keys(base);
 	ft_init_map(base);
 	ft_init_player(base);
-	ft_init_struct();
 }

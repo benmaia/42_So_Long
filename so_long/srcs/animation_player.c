@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.c                                           :+:      :+:    :+:   */
+/*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:31:10 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/11 12:35:28 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:12:58 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ void	ft_update_up(t_base *base)
 {
 	static int	w;
 
-	if (base->keys.w && !base->keys.s)
+	if (base->keys.w && !base->keys.s && !base->keys.a && !base->keys.d)
 	{
 		base->img_p.img = base->img_p.img_w[w];
 		base->img_p.y -= base->img_p.pace;
+		if (base->map[base->img_p.y / 32][base->img_p.x / 32] == '1')
+			base->img_p.y += base->img_p.pace;
 		base->move_counter += 1;
 		if (w < 2)
 			w += 1;
@@ -42,10 +44,12 @@ void	ft_update_down(t_base *base)
 {
 	static int	s;
 
-	if (!base->keys.w && base->keys.s)
+	if (!base->keys.w && base->keys.s && !base->keys.a && !base->keys.d)
 	{
 		base->img_p.img = base->img_p.img_s[s];
 		base->img_p.y += base->img_p.pace;
+		if (base->map[(base->img_p.y / 32)][(base->img_p.x / 32)] == '1')
+			base->img_p.y -= base->img_p.pace;
 		base->move_counter += 1;
 		if (s < 2)
 			s += 1;
@@ -63,10 +67,12 @@ void	ft_update_left(t_base *base)
 {
 	static int	a;
 
-	if (base->keys.a && !base->keys.d)
+	if (base->keys.a && !base->keys.d && !base->keys.s && !base->keys.w)
 	{
 		base->img_p.img = base->img_p.img_a[a];
 		base->img_p.x -= base->img_p.pace;
+		if (base->map[(base->img_p.y / 32)][(base->img_p.x / 32)] == '1')
+			base->img_p.x += base->img_p.pace;
 		base->move_counter += 1;
 		if (a < 2)
 			a += 1;
@@ -84,10 +90,12 @@ void	ft_update_right(t_base *base)
 {
 	static int	d;
 
-	if (!base->keys.a && base->keys.d)
+	if (!base->keys.a && base->keys.d && !base->keys.w && !base->keys.s)
 	{
 		base->img_p.img = base->img_p.img_d[d];
 		base->img_p.x += base->img_p.pace;
+		if (base->map[base->img_p.y / 32][(base->img_p.x / 32)] == '1')
+			base->img_p.x -= base->img_p.pace;
 		base->move_counter += 1;
 		if (d < 2)
 			d += 1;
@@ -107,7 +115,7 @@ void	ft_update_player(t_base *base)
 {
 	static int	pace;
 
-	if (pace++ < 2)
+	if (pace++ < 5)
 		return ;
 	pace = 0;
 	ft_update_up(base);

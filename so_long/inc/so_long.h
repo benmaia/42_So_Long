@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/12 14:55:45 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:49:21 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef enum s_key {
  	ESC = 65307
 }	t_key;
 */
+
 typedef struct s_keys {
 	int	w;
 	int	s;
@@ -56,6 +57,8 @@ typedef struct s_imgs {
 	int		height;
 	int		width;
 	int		pace;
+	int		nbr;
+	int		counter;
 	int		x;
 	int		y;
 }	t_imgs;
@@ -67,11 +70,13 @@ typedef struct s_base {
 	int		win_x;
 	int		win_y;
 	int		move_counter;
+	char	*scream;
 	t_imgs	img_0;
 	t_imgs	img_1;
 	t_imgs	img_p;
 	t_imgs	img_c;
 	t_imgs	img_e;
+	t_imgs	img_x;
 	t_keys	keys;
 }		t_base;
 
@@ -87,7 +92,7 @@ int		ft_hook(t_base *base);
 
 void	ft_update_player(t_base *base);
 
-void	ft_move_counter(t_base *base);
+int		ft_move_counter(t_base *base);
 
 void	ft_paint(t_base *base);
 
@@ -109,7 +114,7 @@ int		check_map_close(char **map);
 
 int		check_map_size(t_base *base, char **map);
 
-int		check_map_playble(char **map);
+int		check_map_playble(t_base *base, char **map);
 
 void	map_print(t_base *base);
 
@@ -118,7 +123,9 @@ void	map_start(t_base *base);
 void	ft_init_map(t_base *base);
 
 void	ft_init_player(t_base *base);
+
 void	init_keys(t_base *base);
+
 t_base	*ft_init_struct(void);
 
 void	update_collectible(t_base *base);
@@ -126,5 +133,13 @@ void	update_collectible(t_base *base);
 void	update_exit(t_base *base);
 
 void	exit_s(t_base *base);
+
+int		check_map_position(t_base *base);
+
+void	colider(t_base *base);
+
+void	update_enemy(t_base *base);
+
+int		sound(t_base *base, char *argv);
 
 #endif

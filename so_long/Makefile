@@ -39,7 +39,7 @@ all: $(NAME)
 
 .SILENT: $(OBJ)
 
-$(NAME): show runlibft $(OBJ)
+$(NAME): show norm runlibft $(OBJ)
 	@echo "$(YELLOW)[      Compiling so_long ...     ]$(RESET)"	
 	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LFLAGS)
 	@mkdir -p build \build/objs
@@ -47,6 +47,7 @@ $(NAME): show runlibft $(OBJ)
 	@mkdir -p build/bin
 	@mv $(NAME) build/bin
 	@cp img/*/*.xpm ./
+	@cp maps/*.ber ./
 	@echo "$(GREEN)[    So_long is ready to play!   ]$(RESET)"
 
 show:
@@ -72,9 +73,11 @@ fclean: clean
 	@make -s fclean -C $(LIBFT_DIR)
 	@rm -rf build
 	@rm -rf *.xpm
+	@rm -f *.ber
 	@echo "$(RED)[    So_long has been removed!   ]$(RESET)"
 
 re: fclean all
 
 exe: all
 	@build/bin/./so_long map2.ber
+

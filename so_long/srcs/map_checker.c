@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:55:00 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/12 15:00:43 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:24:25 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,23 @@ char	**read_map(int fd)
 	char	*str;
 	char	*buf;
 	char	**map;
+	char	*tmp;
 
 	str = ft_strdup("");
 	buf = get_next_line(fd);
 	while (buf != NULL)
 	{
-		str = ft_strjoin(str, buf);
+		tmp = ft_strjoin(str, buf);
+		free(str);
+		str = tmp;
+		free(buf);
 		buf = get_next_line(fd);
 	}
-	ft_printf("Success reap_map\n");
 	map = ft_split(str, '\n');
-	free(buf);
-	buf = NULL;
 	free(str);
 	str = NULL;
-	ft_printf("Success free GNL\n");
+	free(buf);
+	buf = NULL;
 	return (map);
 }
 
@@ -128,29 +130,29 @@ int	check_map_size(t_base *base, char **map)
 /* to the paint function so it knows   */
 /* where to start!                     */
 
-int	check_map_playble(char **map)
+int	check_map_playble(t_base *base, char **map)
 {
 	int			i;
 	int			j;
 	static int	e;
-	static int	c;
 	static int	p;
 
 	i = -1;
+	base->img_c.nbr = 0;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == 'C')
-				c++;
+				base->img_c.nbr++;
 			if (map[i][j] == 'P')
 				p++;
 			if (map[i][j] == 'E')
 				e++;
 		}
 	}
-	if (c < 1 || p < 1 || e < 1)
+	if (base->img_c.nbr < 1 || p < 1 || e < 1)
 		return (ft_printf("The map have to contain at least one \
 of each char '1' '0' 'C' 'P' 'E'\n") - 70);
 	return (1);
