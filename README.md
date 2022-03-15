@@ -34,7 +34,7 @@ make exe
 <p> To sort the numbers, we only had 2 stacks (a and b) and 4 types of movements, swap, push, rotate, and reverse rotate:</p>
 
 <br>
-<img src="https://cdn.discordapp.com/attachments/461563270411714561/953330905949294672/ezgif.com-gif-maker1.gif" width="1000px" height="500px"/>
+<img src="https://cdn.discordapp.com/attachments/461563270411714561/953330905949294672/ezgif.com-gif-maker1.gif" width="1000px" height="450px"/>
 </br>
 <p> So_Long OK ✅ So_Long Bonus OK ✅</p>
 </br>
