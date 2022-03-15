@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:55:00 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/14 19:24:25 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:56:51 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	get_fd(char **argv)
 		ft_printf("file opening failed\n");
 		exit(EXIT_FAILURE);
 	}
-	ft_printf("Success open fd\n");
 	return (fd);
 }
 

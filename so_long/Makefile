@@ -11,7 +11,12 @@ UNAME := $(shell uname)
 CFLAGS= -I$(INC) -O3 -I.. -g -Iinc -Ilibs/libft
 
 NAME= so_long
-SRC = $(wildcard srcs/*.c)
+SRC = srcs/animation_player.c srcs/exit.c \
+srcs/ft_init_exit.c srcs/init_collectible.c \
+srcs/init_enemy.c srcs/init_map.c srcs/init.c \
+srcs/init_player.c srcs/main.c srcs/map_checker.c \
+srcs/moving.c srcs/paint.c
+
 OBJ = $(SRC:%.c=%.o)
 
 LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm -L$(LMLX) -L$(LIBFT_DIR) -lft
@@ -61,8 +66,8 @@ runlibft:
 
 norm:
 	@echo "$(GREEN)[           Norminette           ]$(RESET)"
-	norminette -R CheckForbiddenSourceHeader $(SRC)
-	norminette -R CheckDefine inc/so_long.h
+	@norminette -R CheckForbiddenSourceHeader $(SRC)
+	@norminette -R CheckDefine inc/so_long.h
 
 clean:
 	@rm -rf build/objs

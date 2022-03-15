@@ -6,11 +6,13 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:46:51 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/14 15:35:42 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:45:33 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/* Free memory allocations of the map */
 
 void	free_map(t_base *base)
 {
@@ -25,6 +27,8 @@ void	free_map(t_base *base)
 	mlx_destroy_image(base->mlx, base->img_0.img);
 	mlx_destroy_image(base->mlx, base->img_1.img);
 }
+
+/* Free memory allocations of the player */
 
 void	free_player(t_base *base)
 {
@@ -41,6 +45,9 @@ void	free_player(t_base *base)
 	}
 }
 
+/* Free memory allocations of the enemy */
+/* and the collectibles                 */
+
 void	free_collectible_and_enemy(t_base *base)
 {
 	int	i;
@@ -55,12 +62,16 @@ void	free_collectible_and_enemy(t_base *base)
 	}
 }
 
+/* Free memory allocations of the exit */
+
 void	free_exit(t_base *base)
 {
 	free(base->img_e.img);
 	mlx_destroy_image(base->mlx, base->img_e.img);
 	mlx_destroy_image(base->mlx, base->img_e.img_w);
 }
+
+/* Free memory of everything and exit */
 
 void	exit_s(t_base *base)
 {

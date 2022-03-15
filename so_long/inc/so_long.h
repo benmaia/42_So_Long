@@ -6,7 +6,7 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:02:53 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/14 21:49:21 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:50:17 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "libft.h"
 # include "mlx.h"
-/*#include "mlx_int.h"*/
 # include <fcntl.h>
 # include <stdio.h>
 
+/* Key Values Darwin */
 typedef enum s_key {
 	W = 13,
 	S = 1,
@@ -27,6 +27,7 @@ typedef enum s_key {
 	ESC = 53
 }	t_key;
 
+/* Key Values Linux */
 /*typedef enum s_key {
  	W = 119,
  	S = 115,
@@ -36,6 +37,9 @@ typedef enum s_key {
 }	t_key;
 */
 
+/* Hold the value, to see      */
+/* if the key is being pressed */
+
 typedef struct s_keys {
 	int	w;
 	int	s;
@@ -43,6 +47,9 @@ typedef struct s_keys {
 	int	d;
 	int	esc;
 }	t_keys;
+
+/* Holds everything of */
+/* the images itself   */
 
 typedef struct s_imgs {
 	void	*img_w[3];
@@ -63,6 +70,9 @@ typedef struct s_imgs {
 	int		y;
 }	t_imgs;
 
+/* Holds everything of       */
+/* base structer of the game */
+
 typedef struct s_base {
 	void	*mlx;
 	void	*window;
@@ -80,9 +90,15 @@ typedef struct s_base {
 	t_keys	keys;
 }		t_base;
 
+/*			MLX FUNCTIONS 			*/
+
 t_base	*ft_init_struct(void);
 
 void	ft_init_window(t_base *base);
+
+/*			KEY FUNCTIONS 			*/
+
+void	init_keys(t_base *base);
 
 int		ft_key_hook_up(int keycode, t_base *base);
 
@@ -90,25 +106,29 @@ int		ft_key_hook_down(int keycode, t_base *base);
 
 int		ft_hook(t_base *base);
 
+/*			PLAYER FUNCTIONS		*/
+
+t_base	*ft_init_struct(void);
+
+void	ft_init_player(t_base *base);
+
+void	ft_init_player_animation(t_base *base);
+
 void	ft_update_player(t_base *base);
 
 int		ft_move_counter(t_base *base);
 
 void	ft_paint(t_base *base);
 
-void	ft_init_animations(t_base *base);
-
-void	ft_init_player_animation(t_base *base);
-
-void	ft_map_ini(int argc, char **argv, t_base *base);
-
-int		map_checker(char **map);
-
-int		ft_checker(t_base *base, char **argv);
+/*			MAP FUNCTIONS 			*/
 
 int		get_fd(char **argv);
 
 char	**read_map(int fd);
+
+void	ft_init_map(t_base *base);
+
+int		ft_checker(t_base *base, char **argv);
 
 int		check_map_close(char **map);
 
@@ -118,28 +138,22 @@ int		check_map_playble(t_base *base, char **map);
 
 void	map_print(t_base *base);
 
-void	map_start(t_base *base);
+/*			ENEMY FUNCTIONS		*/
 
-void	ft_init_map(t_base *base);
+void	update_enemy(t_base *base);
 
-void	ft_init_player(t_base *base);
-
-void	init_keys(t_base *base);
-
-t_base	*ft_init_struct(void);
+/*		COLLECTIBLE FUNCTIONS		*/
 
 void	update_collectible(t_base *base);
+
+/*			EXIT FUNCTIONS		*/
 
 void	update_exit(t_base *base);
 
 void	exit_s(t_base *base);
 
-int		check_map_position(t_base *base);
+/*			COLIDER FUNCTIONS		*/
 
 void	colider(t_base *base);
-
-void	update_enemy(t_base *base);
-
-int		sound(t_base *base, char *argv);
 
 #endif

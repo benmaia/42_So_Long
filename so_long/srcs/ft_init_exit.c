@@ -6,11 +6,14 @@
 /*   By: bmiguel- <bmiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:43:18 by bmiguel-          #+#    #+#             */
-/*   Updated: 2022/03/14 14:37:36 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:45:34 by bmiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/* Init the Exit frames to animation */
+/* Puts the image to the struct      */
 
 void	ft_init_exit(t_base *base)
 {
@@ -31,6 +34,10 @@ void	ft_init_exit(t_base *base)
 	if (i == 2)
 		i = 0;
 }
+
+/* Updates the frame of the exit */
+/* Checks the exit position and  */
+/* prints it                     */
 
 void	update_exit(t_base *base)
 {
